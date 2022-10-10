@@ -3,11 +3,21 @@ import { useState } from 'react';
 // components
 import TaskItem from '../components/TaskItem';
 // metrial-ui
-import { Button, FormControl, Input, InputLabel } from '@mui/material';
+import {
+  Button,
+  FormControl,
+  Input,
+  InputLabel,
+  Card,
+  CardContent,
+  Typography,
+} from '@mui/material';
+// css
+import classes from '../styles/Home.module.css';
 
 const Home = () => {
   // state
-  const [todoTasks, setTodoTasks] = useState(['Go for a run', 'go shopping']);
+  const [todoTasks, setTodoTasks] = useState([]);
   const [input, setInput] = useState('');
   const [taskIsAdded, setTaskisAdded] = useState(true);
 
@@ -30,22 +40,42 @@ const Home = () => {
 
   return (
     <div>
-      <h1>My Tasks</h1>
-      <form>
-        <FormControl>
-          <InputLabel>Add a new task</InputLabel>
-          <Input type="text" value={input} onChange={handleChange} />
-        </FormControl>
-        <Button type="submit" onClick={addTask} variant="contained">
-          Add Task
-        </Button>
-      </form>
-      <ul>
-        {todoTasks.map((task) => (
-          <TaskItem task={task} />
-        ))}
-      </ul>
-      <div>{!taskIsAdded && <p>Please add a task</p>}</div>
+      <Card
+        elevation={3}
+        sx={{ width: 480, minHeight: 320, mx: 'auto', mt: '4rem' }}
+      >
+        <CardContent>
+          <Typography mt={2} mb={6} align="center" gutterBottom variant="h4">
+            My Tasks
+          </Typography>
+          <form className={classes.form}>
+            <FormControl>
+              <InputLabel>Add a new task</InputLabel>
+              <Input type="text" value={input} onChange={handleChange} />
+            </FormControl>
+            <Button
+              sx={{ ml: '1rem' }}
+              type="submit"
+              onClick={addTask}
+              variant="contained"
+            >
+              Add Task
+            </Button>
+          </form>
+          <ul>
+            {todoTasks.map((task) => (
+              <TaskItem task={task} />
+            ))}
+          </ul>
+          <div>
+            {!taskIsAdded && (
+              <Typography mt={4} align="center" variant="h6" color="orangered">
+                Please add a task
+              </Typography>
+            )}
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };
