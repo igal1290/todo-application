@@ -42,7 +42,7 @@ const Home = () => {
     <div>
       <Card
         elevation={3}
-        sx={{ width: 480, minHeight: 320, mx: 'auto', mt: '4rem' }}
+        sx={{ width: 1100, minHeight: 320, mx: 'auto', mt: '4rem' }}
       >
         <CardContent>
           <Typography mt={2} mb={6} align="center" gutterBottom variant="h4">
