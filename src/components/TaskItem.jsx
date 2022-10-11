@@ -6,7 +6,7 @@ const TaskItem = ({ task }) => {
     <div>
       <List>
         <ListItem>
-          <ListItemText primary={task} />
+          <ListItemText primary={task.text} />
         </ListItem>
       </List>
     </div>
